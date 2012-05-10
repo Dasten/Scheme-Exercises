@@ -47,9 +47,7 @@
 ;;Exercise 5 - (element-append '(a b c d e f g h) 'M) -> '(a b c d e f g h M) 
 (define (element-append l argl)
   (cond
-   ((null? l) '())
-   ((eq? (cdr l) '())
-    (cons argl (element-append (cdr l) argl)))
+   ((null? l) (cons argl '()))  
    (else
     (cons (car l) (element-append (cdr l) argl)))))
 

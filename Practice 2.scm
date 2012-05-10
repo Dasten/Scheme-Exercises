@@ -41,7 +41,7 @@
   (let recur ((list l))
     (cond
      ((null? list) '())
-     ((eq?  (car l) argl1)
+     ((eq?  (car list) argl1)
       (cons argl2 (cdr list)))
      (else
       (recur (cons (car list) (cdr list)))))))
@@ -52,12 +52,44 @@
 (define (element-append l argl)
   (let recur ((list l))
     (cond
-     ((null? list) '())
-     ((eq? (cdr list) '())
-      (cons argl (recur (cdr list))))
+     ((null? list) (cons argl '()))
      (else
       (cons (car list) (recur (cdr list)))))))
 
 (pp (element-append '(a b c d e f g h) 'M))
 
 ;;Exercise 6 - (msust '(a b c a e f a h) 'a 'M) -> '(M b c M e f M h)
+(define (msust l argl1 argl2)
+  (let recur ((list l))
+    (cond
+     ((null? list) '())
+     ((eq? (car list) argl1)
+      (cons argl2 (recur (cdr list))))
+     (else
+      (cons (car list) (recur (cdr list)))))))
+
+(pp (msust '(a b c a e f a h) 'a 'M))
+
+;;Exercise 7 - (mrember '(a b c a e f a h) 'a) -> '(b c e f h)
+(define (mrember l argl)
+  (let recur ((list l))
+    (cond
+     ((null? list) '())
+     ((eq? (car list) argl)
+      (recur (cdr list)))
+     (else
+      (cons (car list) (recur (cdr list)))))))
+
+(pp (mrember '(a b c a e f a h) 'a))
+
+;;Exercise 8 - (nth-element '(a b c d e f g h) 3) -> 'd
+(define (nth-element l argl)
+  (let recur ((list l) (counter argl))
+    (cond
+     ((null? list) '())
+     ((eq? 0 counter)
+      (car list))
+     (else
+      (recur (cdr l) (- counter 1))))))
+
+(pp (nth-element '(a b c d e f g h) 4))
