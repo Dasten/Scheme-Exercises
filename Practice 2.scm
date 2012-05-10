@@ -8,7 +8,8 @@
      ((eq? (car list) argl)
       (recur (cdr list)))
      (else
-      (cons (car list) (recur (cdr list)))))))
+      (cons 
+       (car list) (recur (cdr list)))))))
 
 (pp (list-operation '(a b c d e f g h) 'c))
 
@@ -84,12 +85,47 @@
 
 ;;Exercise 8 - (nth-element '(a b c d e f g h) 3) -> 'd
 (define (nth-element l argl)
-  (let recur ((list l) (counter argl))
+  (let recur ((list l) 
+              (counter argl))
     (cond
      ((null? list) '())
-     ((eq? 0 counter)
+     ((eq? counter 0)
       (car list))
      (else
-      (recur (cdr l) (- counter 1))))))
+      (recur (cdr list) (- counter 1))))))
 
-(pp (nth-element '(a b c d e f g h) 4))
+(pp (nth-element '(a b c d e f g h) 3))
+
+;;Exercise  9 - (nth-rember '(a b c d e f g h) 3) -> '(a b c e f g h)
+(define (nth-rember l argl)
+  (let recur ((list l)
+              (counter argl))
+    (cond
+     ((eq? counter 0)
+      (cdr list))
+     (else
+      (cons (car list) (recur (cdr list) (- counter 1)))))))
+
+(pp (nth-rember '(a b c d e f g h) 3))
+
+;;Exercise 10 - (element-occur '(a b c a e f a h) 'a) -> 3
+(define (element-occur l argl)
+  (let recur ((list l))
+    (cond
+     ((null? list) 0)
+     ((eq? (car list) argl)
+      (+ 1 (recur (cdr list))))
+     (else
+      (recur (cdr list))))))
+
+(pp (element-occur '(a b c a e f a h) 'a))
+
+;;Exercise  11 - (length '(a b c d e f g h)) -> 8
+(define (length l)
+  (let recur ((list l))
+    (cond 
+     ((null? list) 0)
+     (else
+      (+ 1 (recur (cdr list)))))))
+
+(pp (length '(a b c d e f g)))
