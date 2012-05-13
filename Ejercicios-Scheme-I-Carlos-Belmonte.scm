@@ -8,6 +8,13 @@
      (else
       (+ 1 (recur (cdr list)))))))
 
+(define (element-append l argl)
+  (let recur ((list l))
+    (cond
+     ((null? list) (cons argl '()))
+     (else
+      (cons (car list) (recur (cdr list)))))))
+
 ;;-1 - Algoritmos con listas
 
 ;;Ejercicio 1
@@ -49,3 +56,34 @@
       (recur (cdr list) (- counter 1))))))
 
 (pp (list-ref-circular '(a b c d Z Y f) 16))
+
+;;Ejercicio 4
+(define (palindrome? l)
+  (equal? (reverse l) l))
+
+(pp (palindrome? '(a b b a)))
+
+;;Ejercicio 5
+;;Usamos la funcion element-append definida arriba
+(define (rotate-left l k)
+  (let recur ((list l) 
+              (counter k))
+    (cond
+     ((eq? counter 0)
+      list)
+     (else
+      (recur (element-append (cdr list) (car list)) (- counter 1))))))
+
+(pp (rotate-left '(a b c d e f g h) 3))
+
+;;Ejercicio 6
+(define (rotate-right l k)
+  (let recur ((list l)
+              (counter k))
+    (cond
+     ((eq? counter 0)
+      list)
+     (else
+      (recur (TO DO) (- counter 1))))))
+
+(pp (rotate-right '(a b c d e f g h) 3))
