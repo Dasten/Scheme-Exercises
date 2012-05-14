@@ -1,5 +1,7 @@
 ;; Ejercicios Scheme I - Carlos Belmonte Ceniza
 
+(load "/data/projects/scheme-srfi/src/srfi-1.scm")
+
 ;;Funciones complementarias usadas para los ejercicios
 (define (length l)
   (let recur ((list l))
@@ -77,6 +79,7 @@
 (pp (rotate-left '(a b c d e f g h) 3))
 
 ;;Ejercicio 6
+;;Usamos la funcion take-right y drop-right del srfi-1
 (define (rotate-right l k)
   (let recur ((list l)
               (counter k))
@@ -84,6 +87,10 @@
      ((eq? counter 0)
       list)
      (else
-      (recur (TO DO) (- counter 1))))))
+      (recur 
+       (drop-right (cons (car (take-right list 1)) list) 1)
+       (- counter 1))))))
 
 (pp (rotate-right '(a b c d e f g h) 3))
+
+;;Ejercicio 7
