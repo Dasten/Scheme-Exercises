@@ -94,3 +94,55 @@
 (pp (rotate-right '(a b c d e f g h) 3))
 
 ;;Ejercicio 7
+(define (insert-at new k l) 
+  (let recur ((list l)
+              (counter k))
+    (cond
+     ((eq? counter 0)
+      (cons new (cdr list)))
+     (else
+      (cons (car list) (recur (cdr list) (- counter 1)))))))
+
+(pp (insert-at 'N 2 '(a b c d e f)))
+
+;;Ejercicio 8
+(define (insert-left new e l)
+  (let recur ((list l))
+    (cond 
+     ((null? list) '())
+     ((eq? (car list) e)
+      (cons new (cons e (recur (cdr list)))))
+     (else
+      (cons (car list) (recur (cdr list)))))))
+
+(pp (insert-left 'N 'c '(a b c d e c f)))
+
+;;Exercicio 9
+;;TO DO
+
+;;Ejercicio 10
+(define (insert-right new e l)
+  (let recur ((list l))
+    (cond
+     ((null? list) '())
+     ((eq? (car list) e)
+      (cons e (cons new (recur (cdr list)))))
+     (else
+      (cons (car list) (recur (cdr list)))))))
+
+(pp (insert-right 'N 'c '(a b c d e c f)))
+
+;;Ejercicio 11
+;;TO DO
+
+;;Ejercicio 12
+(define (remove-at k l)
+  (let recur ((list l)
+              (counter k))
+    (cond
+     ((eq? counter 0)
+      (cdr list))
+     (else
+      (cons (car list) (recur (cdr list) (- counter 1)))))))
+
+(pp (remove-at 3 '(a b c d e f)))
