@@ -146,3 +146,22 @@
       (cons (car list) (recur (cdr list) (- counter 1)))))))
 
 (pp (remove-at 3 '(a b c d e f)))
+
+;;Ejercicio 13
+;;TO-DO
+
+
+;;Ejercicio 14
+;;TO-DO
+
+#;;
+(define (pack l)
+  (let recur ((list l))
+    (cond
+     ((null? list) '())
+     ((equal? (car list) (cadr list))
+      (cons (cons (car list) (recur (cddr list))) '()))
+     (else
+      (cons (car list) (recur (cdr list)))))))
+  
+;;Ejercicio 15
