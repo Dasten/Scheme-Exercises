@@ -17,7 +17,7 @@
      (else
       (cons (car list) (recur (cdr list)))))))
 
-;;-1 - Algoritmos con listas
+;; 1 - Algoritmos con listas
 
 ;;Ejercicio 1
 ;;Usamos la funcion length definida arriba
@@ -165,3 +165,44 @@
       (cons (car list) (recur (cdr list)))))))
   
 ;;Ejercicio 15
+;;Ejercicio 16
+;;Ejercicio 17
+;;Ejercicio 18
+;;TO DO
+
+;; 2 - Algoritmos matematicos
+
+;;Ejercicio 1
+(define (mean l)
+  (/ (fold + 0 l) (length l)))
+
+(pp (mean '(1 2 3 4 5)))
+
+;;Ejercicio 2
+;;Ejercicio 3
+
+;;Ejercicio 4
+(define (geometric-mean l)
+  (exp (/ (log (fold * 1 l)) (length l))))
+
+(pp (geometric-mean '(1 2 3 4 5)))
+
+;;Ejercicio 5
+#;;
+(define (harmonic-mean l)
+  )
+
+;;Ejercicio 6
+(define (arithmetic-mean l)
+  (mean l))
+
+(pp (arithmetic-mean '(1 2 3 4 5)))
+
+;;Ejercicio 7
+
+;;Ejercicio 8
+#;;
+(define (quadratic-mean l)
+  (sqrt (/ (fold ((lambda (x) (* x x)) l) l))))
+
+;;(pp (quadratic-mean '(1 2 3 4 5)))
