@@ -17,6 +17,22 @@
      (else
       (cons (car list) (recur (cdr list)))))))
 
+(define (maximum l)
+  (let recur ((list (cdr l))
+              (n (car l)))
+    (cond
+     ((null? list) n)
+     ((< n (car list)) (recur (cdr list) (car list)))
+     ((> n (car list)) (recur (cdr list) n)))))
+
+(define (minimum l)
+  (let recur ((list (cdr l))
+             (n (car l)))
+    (cond
+     ((null? list) n)
+     ((> n (car list)) (recur (cdr list) (car list)))
+     ((< n (car list)) (recur (cdr list) n)))))
+
 ;; 1 - Algoritmos con listas
 (pp "Algoritmos con Listas")
 
@@ -222,3 +238,16 @@
     (length l))))
 
 (pp (quadratic-mean '(1 2 3 4 5)))
+
+;;Ejercicio 9
+
+;;Ejercicio 10
+(define (mid-range l-pairs)
+  (/ (+ (maximum l-pairs) (minimum l-pairs)) 2.0))
+
+(pp (mid-range '(1 4 2 3 6 5)))
+
+
+
+
+  
