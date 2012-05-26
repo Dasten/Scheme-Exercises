@@ -18,6 +18,7 @@
       (cons (car list) (recur (cdr list)))))))
 
 ;; 1 - Algoritmos con listas
+(pp "Algoritmos con Listas")
 
 ;;Ejercicio 1
 ;;Usamos la funcion length definida arriba
@@ -171,6 +172,7 @@
 ;;TO DO
 
 ;; 2 - Algoritmos matematicos
+(pp "Algoritmos matematicos")
 
 ;;Ejercicio 1
 (define (mean l)
@@ -188,9 +190,12 @@
 (pp (geometric-mean '(1 2 3 4 5)))
 
 ;;Ejercicio 5
-#;;
 (define (harmonic-mean l)
-  )
+  (/ (+ (length l) 0.0)  (fold + 0 
+          (map (lambda (n) (/ 1 n))
+               l))))
+
+(pp (harmonic-mean '(1 2 3 4 5)))
 
 ;;Ejercicio 6
 (define (arithmetic-mean l)
@@ -199,10 +204,21 @@
 (pp (arithmetic-mean '(1 2 3 4 5)))
 
 ;;Ejercicio 7
+(define (weighted-mean l-pairs)
+  (/ 
+   (fold + 0 (map (lambda (l) (* (car l) (cadr l)))
+                  l-pairs))
+   (fold + 0 (map cadr l-pairs))))
+
+(pp (weighted-mean '((1 0.5) (4 0.8) (3 0.4))))
 
 ;;Ejercicio 8
-#;;
 (define (quadratic-mean l)
-  (sqrt (/ (fold ((lambda (x) (* x x)) l) l))))
+  (sqrt 
+   (/ 
+    (fold + 0 
+          (map (lambda (n) (expt n 2))
+               l))
+    (length l))))
 
-;;(pp (quadratic-mean '(1 2 3 4 5)))
+(pp (quadratic-mean '(1 2 3 4 5)))
