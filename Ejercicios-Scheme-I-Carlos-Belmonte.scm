@@ -197,6 +197,7 @@
 (pp (mean '(1 2 3 4 5)))
 
 ;;Ejercicio 2
+
 ;;Ejercicio 3
 
 ;;Ejercicio 4
@@ -241,6 +242,7 @@
 
 ;;Ejercicio 9
 
+;;Usamos las funciones maximum y minimum definidas arriba
 ;;Ejercicio 10
 (define (mid-range l-pairs)
   (/ (+ (maximum l-pairs) (minimum l-pairs)) 2.0))
