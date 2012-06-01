@@ -135,7 +135,45 @@
 (pp (insert-left 'N 'c '(a b c d e c f)))
 
 ;;Exercicio 9
-;;TO DO
+#;;
+(define (insert-left* new e l)
+  (let recur ((list l))
+    (cond
+     ((null? list) '())
+     ((list? (car list))
+      (cons new (cons e (recur (cdr list)))))
+     ((eq? (car list) e)
+      (cons new (cons e (recur (cdr list)))))
+     (else
+      (cons (car list) (recur (cdr list)))))))
+
+#;;
+  (define (insert-left* new e l)
+    (let recur ((list l))
+      (cond
+       ((null? list) '())
+       ((list? (car list))
+        (cons new (cons (car list) (recur (cdr list)))))
+       ((eq? (car list) e)
+        (cons new (cons e (recur (cdr list)))))
+       (else
+        (cons (car list) (recur (cdr list)))))))
+
+
+(define (insert-left* new e l)
+  (let recur ((list l))
+    (cond
+     ((null? list) '())
+     ((list? (car list))
+      (cons  (car list) (cons new (recur (cdr list)))))
+     ((eq? (car list) e)
+      (cons new (cons e (recur (cdr list)))))
+     (else
+      (cons (car list) (recur (cdr list)))))))
+
+
+
+(pp (insert-left* 'N 'c '(a b (z y c) d c d (x x c) e c f)))
 
 ;;Ejercicio 10
 (define (insert-right new e l)
@@ -241,6 +279,7 @@
 (pp (quadratic-mean '(1 2 3 4 5)))
 
 ;;Ejercicio 9
+;;TO-DO
 
 ;;Usamos las funciones maximum y minimum definidas arriba
 ;;Ejercicio 10
