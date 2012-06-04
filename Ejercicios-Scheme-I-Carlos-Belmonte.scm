@@ -146,35 +146,33 @@
       (cons new (cons e (recur (cdr list)))))
      (else
       (cons (car list) (recur (cdr list)))))))
-
-#;;
+  
+  #;;
+  (define (insert-left* new e l)
+  (let recur ((list l))
+  (cond
+  ((null? list) '())
+  ((list? (car list))
+  (cons new (cons (car list) (recur (cdr list)))))
+  ((eq? (car list) e)
+  (cons new (cons e (recur (cdr list)))))
+  (else
+  (cons (car list) (recur (cdr list)))))))
+  
+  #;;
   (define (insert-left* new e l)
     (let recur ((list l))
       (cond
        ((null? list) '())
        ((list? (car list))
-        (cons new (cons (car list) (recur (cdr list)))))
+        (cons (cons new (car list)) (recur (cdr list))))
        ((eq? (car list) e)
-        (cons new (cons e (recur (cdr list)))))
+        (cons new (cons (car list) (recur (cdr list)))))
        (else
         (cons (car list) (recur (cdr list)))))))
-
-
-(define (insert-left* new e l)
-  (let recur ((list l))
-    (cond
-     ((null? list) '())
-     ((list? (car list))
-      (cons  (car list) (cons new (recur (cdr list)))))
-     ((eq? (car list) e)
-      (cons new (cons e (recur (cdr list)))))
-     (else
-      (cons (car list) (recur (cdr list)))))))
-
-
-
-(pp (insert-left* 'N 'c '(a b (z y c) d c d (x x c) e c f)))
-
+  
+;;(pp (insert-left* 'N 'c '(a b z y s (a d c) d x (x c e) c f)))
+  
 ;;Ejercicio 10
 (define (insert-right new e l)
   (let recur ((list l))
@@ -188,7 +186,6 @@
 (pp (insert-right 'N 'c '(a b c d e c f)))
 
 ;;Ejercicio 11
-;;TO DO
 
 ;;Ejercicio 12
 (define (remove-at k l)
@@ -203,27 +200,11 @@
 (pp (remove-at 3 '(a b c d e f)))
 
 ;;Ejercicio 13
-;;TO-DO
-
-
 ;;Ejercicio 14
-;;TO-DO
-
-#;;
-(define (pack l)
-  (let recur ((list l))
-    (cond
-     ((null? list) '())
-     ((equal? (car list) (cadr list))
-      (cons (cons (car list) (recur (cddr list))) '()))
-     (else
-      (cons (car list) (recur (cdr list)))))))
-  
 ;;Ejercicio 15
 ;;Ejercicio 16
 ;;Ejercicio 17
 ;;Ejercicio 18
-;;TO DO
 
 ;; 2 - Algoritmos matematicos
 (pp "Algoritmos matematicos")
